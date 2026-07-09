@@ -1,20 +1,14 @@
 @echo off
 chcp 65001 >nul
-echo =============================================
-echo   启动 创新创业项目报名系统
-echo =============================================
-
-if not exist "sqlite-jdbc-3.45.1.0.jar" (
-    echo [错误] 请先运行 compile.bat 下载依赖并编译！
-    pause
-    exit /b 1
-)
-
-if not exist "RegistrationSystem.class" (
-    echo [错误] 请先运行 compile.bat 编译源码！
-    pause
-    exit /b 1
-)
-
-java -cp ".;sqlite-jdbc-3.45.1.0.jar" -Dfile.encoding=UTF-8 RegistrationSystem
+cd /d "%~dp0"
+echo ========================================
+echo   BOSS直聘自动化求职工具
+echo ========================================
+echo.
+echo 确保已用"启动浏览器.bat"打开Edge并登录BOSS直聘
+echo.
+echo 确认无误后按任意键开始...
+pause >nul
+echo.
+"python-embed\python.exe" boss_auto.py
 pause
