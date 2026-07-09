@@ -1,6 +1,3 @@
-*.class
 *.db
-export_*.csv
-export_*.json
 __pycache__/
-*.jar
+concurrency_report_*.json
