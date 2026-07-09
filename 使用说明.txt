@@ -1,0 +1,61 @@
+BOSS直聘自动化求职工具 - 使用说明
+=====================================
+
+## 环境准备
+
+1. 安装 Python 3.10+
+2. 安装依赖：
+   pip install undetected-chromedriver selenium
+
+3. Chrome 浏览器需已安装（版本不要太旧，120+即可）
+
+## 配置
+
+编辑 config.json，必须修改的项目：
+
+1. account.phone / account.password：BOSS直聘账号
+2. resume_path：你的简历PDF路径（本地文件路径，用正斜杠）
+3. job_filters.keywords：想投递的岗位关键词
+4. job_filters.city_code：城市代码
+   - 全国 100000000
+   - 北京 101010100
+   - 上海 101020100
+   - 广州 101280100
+   - 深圳 101280600
+   - 杭州 101210100
+   - 成都 101270100
+   - 其余城市自行搜索BOSS直聘URL里的city参数
+5. job_filters.blacklist_companies：公司黑名单关键词
+6. self_intro：投递时的自我介绍（支持 {keyword} 占位符）
+7. reply_templates：HR回复话术，按需修改
+8. anti_detect：风控参数一般默认即可
+
+## 运行
+
+python boss_auto.py
+
+## 首次运行
+
+1. 程序启动后会打开Chrome浏览器
+2. 弹出登录提示框，手动扫码或输入账号密码登录BOSS直聘
+3. 登录成功后点确定，程序开始自动工作
+4. 遇到滑块/人脸验证时程序会弹窗暂停，手动处理后点确定继续
+
+## 数据文件
+
+- apply_record.json：投递记录（已投递过的岗位不会重复投递）
+- chat_history.json：聊天记录（已回复过的消息不会重复回复）
+- logs/apply.log：投递日志
+- logs/chat.log：聊天日志
+- logs/error.log：异常日志
+
+## 停止
+
+Ctrl+C 停止程序
+
+## 注意
+
+- 建议先用少量关键词 + 小限额跑一遍测试
+- 工作时间段外程序自动休眠，可在config里改work_hours_start/end
+- 页面结构偶尔会变（BOSS改版），报错先看logs/error.log
+- 选择器常量在 boss_auto.py 顶部 SEL 字典里，改版时更新那里即可
