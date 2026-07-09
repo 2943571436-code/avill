@@ -29,4 +29,4 @@ pip install pandas pymysql matplotlib
 
 # 3. 配置数据库连接（修改config.py内账号地址）
 # 4. 启动数据处理脚本
-python main.py
+python data_quality.py
