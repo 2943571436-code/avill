@@ -1,3 +1,2 @@
 *.db
 __pycache__/
-concurrency_report_*.json
